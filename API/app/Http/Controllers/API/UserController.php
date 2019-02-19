@@ -69,17 +69,26 @@ class UserController extends Controller
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     }
-    public function searchVehicle($brand, $model){
- 
-        
-        $result = $this->vehicle->searchVehicle($brand, $model);
-        if (!$result) {
-            throw new NotFoundHttpException();
+    public function searchVehicle($brand, $model){  
+        $brand_ok = false;
+        $id = 0;     
+        $result_brand = $this->vehicle->findBrands();
+        foreach($result_brand as $key){          
+            if(ucfirst(strtolower($brand)) == $key['brand']){
+                $brand_ok = true;
+                $id = $key['id'];
+            } 
         }
-        return $result;
-        
-
-        //return $response->getStatusCode(); # 200
+        if($brand_ok){
+            $result_model = $this->vehicle->findModels($model, $id);
+            if(!empty($result_model)){
+                $result = $this->vehicle->searchVehicle($result_model, $brand);
+            }else{
+                return response()->json(['erro'=>"Modelo não encontrado"], 401);   
+            }
+        }else{
+            return response()->json(['erro'=>"Marca não encontrada"], 401);   
+        }
     }
     public function vehicleDetails() 
     { 
