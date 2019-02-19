@@ -1,0 +1,3 @@
+O resultado do trecho de código é a soma das variáveis
+
+42

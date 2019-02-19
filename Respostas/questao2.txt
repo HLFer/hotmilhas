@@ -1,0 +1,18 @@
+2. Em Javascript, qual a diferença entre == e ===?
+
+R.:
+
+A diferença é que quando se utiliza o operador '==' verifica-se apenas a igualdade dos valores. 
+ex.: if(5 == '5'){
+        //Execução do código...
+    }
+Neste caso a condição é verdadeira, pois testou-se apenas o valor.
+
+Já, quando se utiliza o operador '===', estes devem ser estritamente iguais, tanto valor quanto o tipo da 
+variável.
+
+ex.: if(5 === '5'){
+        //Execução do código
+    }
+Neste caso a condição é falsa e não entra na execução do if, pois o tipo das variáveis 
+é diferente, embora os valores sejam iguais.

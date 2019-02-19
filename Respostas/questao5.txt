@@ -1,0 +1,4 @@
+Sim, em Node JS exitem Threads.
+
+O Node JS foi criado inicialmete para solucionar problemas de programação assíncrona e recursos compartilhados tirando proveito de uma única thread, 
+mas isso não restringe o Node de criar novas threads para determinadas operações, caso seja necessário.
